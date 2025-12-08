@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 py-8 px-4">
+  <div class="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 py-4">
     <div class="max-w-md mx-auto">
       <div v-if="loading" class="text-center text-gray-500">Chargement...</div>
 
