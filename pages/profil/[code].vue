@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 py-4">
+  <div class="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 pt-4">
     <div class="max-w-md mx-auto">
       <div v-if="loading" class="text-center text-gray-500">Chargement...</div>
 
-      <div v-else-if="profile" class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <div v-else-if="profile" class="bg-white rounded-t-3xl shadow-2xl overflow-hidden">
         <!-- En-tête avec photo -->
         <div class="relative bg-gradient-to-br from-orange-400 to-orange-500 h-32"></div>
         
