@@ -80,7 +80,7 @@
                 <a :href="`mailto:${profile.mail_contact}`" class="text-gray-700 text-sm">{{ profile.mail_contact }}</a>
               </div>
 
-              <div v-if="profile.address_contact" class="flex items-start gap-3">
+              <div v-if="profile.address_contact" class="flex gap-3 items-center">
                 <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
@@ -204,7 +204,7 @@
                 <a :href="`mailto:${profile.mail_entreprise}`" class="text-gray-700 text-sm">{{ profile.mail_entreprise }}</a>
               </div>
 
-              <div v-if="profile.address_entreprise" class="flex items-start gap-3">
+              <div v-if="profile.address_entreprise" class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
