@@ -42,16 +42,18 @@
           <p v-if="profile.post" class="text-orange-500 font-medium text-lg italic">{{ profile.post }}</p>
           
           <!-- Bouton Enregistrer (exemple d'action) -->
-          <button
+          <a
+            v-if="profile.contact_url"
+            :href="formatUrl(profile.contact_url)"
+            target="_blank"
+            rel="noopener noreferrer"
             class="mt-4 bg-blue-900 text-white px-6 py-2 rounded-full flex items-center gap-2 hover:bg-blue-800 transition"
-            @click="saveContact"
-            aria-label="Enregistrer le contact"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
             </svg>
             Enregistrer le contact
-          </button>
+          </a>
         </div>
 
         <!-- Section CONTACT -->
