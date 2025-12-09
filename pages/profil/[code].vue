@@ -466,7 +466,7 @@ async function fetchProfile(codeParam: string) {
 
   try {
     // NOTE: en prod, utilisez une variable d'environnement pour baseURL
-    const { data } = await axios.get<Profile>(`https://bizconnect-back-web-side.onrender.com/profiles/code/${encodeURIComponent(codeParam)}`)
+    const { data } = await axios.get<Profile>(`https://bizconnect-back-web-side.vercel.app/profiles/code/${encodeURIComponent(codeParam)}`)
     profile.value = data
   } catch (err) {
     console.error('Erreur lors de la récupération du profil :', err)
