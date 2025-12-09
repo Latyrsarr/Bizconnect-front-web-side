@@ -471,32 +471,51 @@
           </h2>
           
           <div class="max-w-md">
-            <!-- Palette de couleur -->
+            <!-- Palette de couleur avec aperçu -->
             <div>
               <label class="block text-gray-700 mb-2 font-medium">
                 Palette de couleur
               </label>
-              <select
-                v-model="form.pallette_couleur"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-              >
-                <option value="A">A - Vert (Green)</option>
-                <option value="B">B - Gris (Gray)</option>
-                <option value="C" selected>C - Orange (Orange)</option>
-                <option value="D">D - Jaune (Yellow)</option>
-                <option value="E">E - Rouge clair (Red)</option>
-                <option value="F">F - Rouge foncé (Dark Red)</option>
-                <option value="G">G - Jaune foncé (Dark Yellow)</option>
-                <option value="H">H - Bleu (Blue)</option>
-              </select>
-              <p class="text-xs text-gray-500 mt-1">Définit les couleurs de l'en-tête et du poste sur la carte de visite</p>
+              <div class="flex items-center gap-3">
+                <select
+                  v-model="form.pallette_couleur"
+                  class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+                  <option value="A">A - Vert (Green)</option>
+                  <option value="B">B - Gris (Gray)</option>
+                  <option value="C" selected>C - Orange (Orange)</option>
+                  <option value="D">D - Jaune (Yellow)</option>
+                  <option value="E">E - Rouge clair (Red)</option>
+                  <option value="F">F - Rouge foncé (Dark Red)</option>
+                  <option value="G">G - Jaune foncé (Dark Yellow)</option>
+                  <option value="H">H - Bleu (Blue)</option>
+                </select>
+                
+                <!-- Aperçu de la couleur sélectionnée -->
+                <div class="flex items-center">
+                    <div 
+                        :class="selectedColorClass"
+                        class="w-12 h-12 rounded-lg border border-gray-300 shadow-sm"
+                        :title="`Palette ${form.pallette_couleur} - ${getPaletteName(form.pallette_couleur)}`"
+                    ></div>
+                    <div 
+                        class="w-12 h-12 bg-slate-50 rounded-lg border border-gray-300 shadow-sm"
+                    ></div>
+                    <div 
+                        class="w-12 h-12 bg-blue-900 rounded-lg border border-gray-300 shadow-sm"
+                    ></div>
+                    </div>
+                </div>
+              <p class="text-xs text-gray-500 mt-2">
+                Définit les couleurs de l'en-tête et du poste sur la carte de visite
+              </p>
             </div>
 
             <!-- Information sur la génération automatique -->
             <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <h3 class="font-medium text-blue-800 mb-2">Information</h3>
               <p class="text-sm text-blue-700">
-                Un code unique et un lien de profil seront automatiquement générés par le système après la création.
+                Après la création de votre profil, notre équipe vous contactera dans les jours à venir afin de finaliser et vous livrer votre carte de visite.
               </p>
             </div>
           </div>
@@ -534,6 +553,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 interface FormData {
   nom_complet: string
@@ -555,6 +575,8 @@ interface SocialNetwork {
   name: string
   url: string
 }
+
+const router = useRouter()
 
 const form = reactive<FormData>({
   nom_complet: '',
@@ -611,6 +633,39 @@ const messageClass = computed(() => {
     : 'bg-red-100 text-red-700 border border-red-200'
 })
 
+// Mapping des couleurs pour l'aperçu
+const paletteColors = {
+  A: 'bg-gradient-to-br from-green-600 to-green-700',
+  B: 'bg-gradient-to-br from-gray-600 to-gray-800',
+  C: 'bg-gradient-to-br from-orange-500 to-orange-600',
+  D: 'bg-gradient-to-br from-yellow-400 to-yellow-500',
+  E: 'bg-gradient-to-br from-red-500 to-red-600',
+  F: 'bg-gradient-to-br from-red-800 to-red-900',
+  G: 'bg-gradient-to-br from-yellow-800 to-yellow-900',
+  H: 'bg-gradient-to-br from-blue-500 to-blue-600'
+} as const
+
+const paletteNames = {
+  A: 'Vert',
+  B: 'Gris',
+  C: 'Orange',
+  D: 'Jaune',
+  E: 'Rouge clair',
+  F: 'Rouge foncé',
+  G: 'Jaune foncé',
+  H: 'Bleu'
+} as const
+
+// Computed pour la classe de couleur sélectionnée
+const selectedColorClass = computed(() => {
+  return paletteColors[form.pallette_couleur as keyof typeof paletteColors] || paletteColors.C
+})
+
+// Fonction pour obtenir le nom de la palette
+const getPaletteName = (palette: string) => {
+  return paletteNames[palette as keyof typeof paletteNames] || 'Orange'
+}
+
 // Fonctions pour gérer les réseaux sociaux dynamiques
 const addOtherSocialContact = () => {
   const key = `other_${Date.now()}`
@@ -626,13 +681,11 @@ const updateOtherSocialKey = (oldKey: string, event: Event) => {
   const newName = target.value.trim()
   
   if (newName && newName !== oldKey) {
-    // Créer une nouvelle entrée avec le nouveau nom
     const newKey = newName.toLowerCase().replace(/\s+/g, '_')
     otherSocialContact[newKey] = {
       name: newName,
       url: otherSocialContact[oldKey].url
     }
-    // Supprimer l'ancienne entrée
     delete otherSocialContact[oldKey]
   }
 }
@@ -651,13 +704,11 @@ const updateOtherSocialEntrepriseKey = (oldKey: string, event: Event) => {
   const newName = target.value.trim()
   
   if (newName && newName !== oldKey) {
-    // Créer une nouvelle entrée avec le nouveau nom
     const newKey = newName.toLowerCase().replace(/\s+/g, '_')
     otherSocialEntreprise[newKey] = {
       name: newName,
       url: otherSocialEntreprise[oldKey].url
     }
-    // Supprimer l'ancienne entrée
     delete otherSocialEntreprise[oldKey]
   }
 }
@@ -666,14 +717,12 @@ const updateOtherSocialEntrepriseKey = (oldKey: string, event: Event) => {
 const socialContactToJSON = () => {
   const result: Record<string, string> = {}
   
-  // Ajouter les réseaux sociaux standards
   Object.entries(socialContact).forEach(([key, value]) => {
     if (value && value.trim()) {
       result[key] = value.trim()
     }
   })
   
-  // Ajouter les autres réseaux sociaux
   Object.entries(otherSocialContact).forEach(([key, { name, url }]) => {
     if (name && name.trim() && url && url.trim()) {
       const cleanKey = name.toLowerCase().replace(/\s+/g, '_')
@@ -687,14 +736,12 @@ const socialContactToJSON = () => {
 const socialEntrepriseToJSON = () => {
   const result: Record<string, string> = {}
   
-  // Ajouter les réseaux sociaux standards
   Object.entries(socialEntreprise).forEach(([key, value]) => {
     if (value && value.trim()) {
       result[key] = value.trim()
     }
   })
   
-  // Ajouter les autres réseaux sociaux
   Object.entries(otherSocialEntreprise).forEach(([key, { name, url }]) => {
     if (name && name.trim() && url && url.trim()) {
       const cleanKey = name.toLowerCase().replace(/\s+/g, '_')
@@ -819,11 +866,18 @@ const submitForm = async () => {
       if (data.contact_url) generatedInfo.push(`URL: ${data.contact_url}`)
       
       showMessage(
-        `Profil créé avec succès! ${generatedInfo.join(' - ')}`,
+        `Profil créé avec succès! Redirection vers le profil...`,
         'success'
       )
       
-      resetForm()
+      // Redirection vers le profil créé après 2 secondes
+      setTimeout(() => {
+        if (data.code) {
+          router.push(`/profil/${data.code}`)
+        } else {
+          showMessage('Erreur: Code non reçu du serveur', 'error')
+        }
+      }, 2000)
       
     } else {
       showMessage(
