@@ -186,7 +186,7 @@
             </div> -->
             
             <!-- Logo entreprise -->
-            <div class="flex items-center">
+            <div class="flex items-center mb-2">
               <div v-if="profile.url_logo_entreprise" class="">
                 <img
                   :src="profile.url_logo_entreprise"
