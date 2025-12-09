@@ -369,6 +369,7 @@ interface Profile {
   url_logo_entreprise?: string
   url_professionnel_photo?: string
   etat?: string
+  pallette_couleur?: string
   createdAt?: string
   updatedAt?: string
 }
