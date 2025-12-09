@@ -179,7 +179,10 @@
 
           <!-- Section ENTREPRISE -->
           <div class="bg-white border-2 border-gray-200 rounded-2xl p-5">
-            <h2 class="text-blue-900 font-bold text-lg mb-4 uppercase">Entreprise</h2>
+            <!-- <div class="flex">
+            <h2 class="text-blue-900 font-bold text-lg">ENTREPRISE:</h2>
+            <h2 :class="postTextColorClass" class="text-blue-900 font-bold text-lg ml-2">{{ profile.nom_entreprise }}</h2>
+            </div> -->
             
             <!-- Logo entreprise -->
             <div class="flex items-center">
@@ -191,7 +194,7 @@
                 />
               </div>
               <div>
-                <h1 class="text-blue-900 font-bold text-lg">{{ profile.nom_entreprise }}</h1>
+                <h2 :class="postTextColorClass" class="font-bold text-xl ml-2">{{ profile.nom_entreprise }}</h2>
               </div>
             </div>
 
