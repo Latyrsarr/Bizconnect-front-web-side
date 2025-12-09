@@ -4,8 +4,11 @@
       <div v-if="loading" class="text-center text-gray-500">Chargement...</div>
 
       <div v-else-if="profile" class="bg-white rounded-t-3xl shadow-2xl overflow-hidden">
-        <!-- En-tête avec photo -->
-        <div class="relative bg-gradient-to-br from-orange-400 to-orange-500 h-32"></div>
+        <!-- En-tête avec photo - Couleur dynamique -->
+        <div 
+          :class="headerGradientClass" 
+          class="relative h-32"
+        ></div>
         
         <!-- Photo de profil -->
         <div class="flex flex-col items-center -mt-16 pb-6">
@@ -39,7 +42,14 @@
 
           <!-- Nom et poste -->
           <h1 class="text-2xl font-bold text-gray-800 mt-4">{{ profile.nom_complet }}</h1>
-          <p v-if="profile.post" class="text-orange-500 font-medium text-lg italic">{{ profile.post }}</p>
+          <!-- Poste avec couleur dynamique -->
+          <p 
+            v-if="profile.post" 
+            :class="postTextColorClass"
+            class="font-medium text-lg italic mt-2"
+          >
+            {{ profile.post }}
+          </p>
           
           <!-- Bouton Enregistrer (exemple d'action) -->
           <a
@@ -380,6 +390,56 @@ const code = (route.params.code as string) ?? ''
 const profile = ref<Profile | null>(null)
 const loading = ref(true)
 const year = new Date().getFullYear()
+
+// Mapping des palettes de couleurs selon vos spécifications
+const paletteMapping = {
+  A: {
+    headerGradient: 'bg-gradient-to-br from-green-600 to-green-700',
+    postText: 'text-green-700'
+  },
+  B: {
+    headerGradient: 'bg-gradient-to-br from-gray-600 to-gray-800',
+    postText: 'text-gray-700'
+  },
+  C: {
+    headerGradient: 'bg-gradient-to-br from-orange-500 to-orange-600',
+    postText: 'text-orange-600'
+  },
+  D: {
+    headerGradient: 'bg-gradient-to-br from-yellow-400 to-yellow-500',
+    postText: 'text-yellow-500'
+  },
+  E: {
+    headerGradient: 'bg-gradient-to-br from-red-500 to-red-600',
+    postText: 'text-red-600'
+  },
+  F: {
+    headerGradient: 'bg-gradient-to-br from-red-800 to-red-900',
+    postText: 'text-red-900'
+  },
+  G: {
+    headerGradient: 'bg-gradient-to-br from-yellow-800 to-yellow-900',
+    postText: 'text-yellow-900'
+  },
+  H: {
+    headerGradient: 'bg-gradient-to-br from-blue-500 to-blue-600',
+    postText: 'text-blue-500'
+  }
+} as const
+
+type PaletteKey = keyof typeof paletteMapping
+
+// Computed pour obtenir la classe de gradient de l'en-tête
+const headerGradientClass = computed(() => {
+  const paletteKey = (profile.value?.pallette_couleur || 'C') as PaletteKey
+  return paletteMapping[paletteKey]?.headerGradient || 'bg-gradient-to-br from-orange-400 to-orange-500'
+})
+
+// Computed pour obtenir la couleur du texte du poste
+const postTextColorClass = computed(() => {
+  const paletteKey = (profile.value?.pallette_couleur || 'C') as PaletteKey
+  return paletteMapping[paletteKey]?.postText || 'text-orange-500'
+})
 
 // Fonction pour formater les URLs
 const formatUrl = (url: string): string => {
