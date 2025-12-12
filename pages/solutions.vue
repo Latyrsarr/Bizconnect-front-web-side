@@ -13,7 +13,7 @@
     </section>
 
     <!-- Navigation ancres -->
-    <div class="sticky top-20 z-40 bg-white shadow-sm">
+    <!-- <div class="sticky top-20 z-40 bg-white shadow-sm">
       <div class="container mx-auto px-4">
         <div class="flex overflow-x-auto py-4 space-x-6">
           <a href="#cartes" class="whitespace-nowrap px-4 py-2 rounded-lg hover:bg-blue-50">Cartes NFC</a>
@@ -23,10 +23,55 @@
           <a href="#services" class="whitespace-nowrap px-4 py-2 rounded-lg hover:bg-blue-50">Services</a>
         </div>
       </div>
+    </div> -->
+    <div class="sticky top-20 z-40 bg-white shadow-sm">
+      <nav class="flex justify-center space-x-6 py-3">
+        
+        <a href="#cartes"
+          @click="activeSection = 'carte-nfc'"
+          :class="activeSection === 'carte-nfc'
+            ? 'bg-blue-600 text-white px-4 py-2 rounded-lg'
+            : 'text-gray-700 hover:text-blue-600 px-4 py-2'">
+          Cartes NFC
+        </a>
+
+        <a href="#menus"
+          @click="activeSection = 'menu-digital'"
+          :class="activeSection === 'menu-digital'
+            ? 'bg-blue-600 text-white px-4 py-2 rounded-lg'
+            : 'text-gray-700 hover:text-blue-600 px-4 py-2'">
+          Menus Digitaux
+        </a>
+
+        <a href="#services"
+          @click="activeSection = 'site-internet'"
+          :class="activeSection === 'site-internet'
+            ? 'bg-blue-600 text-white px-4 py-2 rounded-lg'
+            : 'text-gray-700 hover:text-blue-600 px-4 py-2'">
+          Visibilité Numérique
+        </a>
+
+        <a href="#services"
+          @click="activeSection = 'event'"
+          :class="activeSection === 'event'
+            ? 'bg-blue-600 text-white px-4 py-2 rounded-lg'
+            : 'text-gray-700 hover:text-blue-600 px-4 py-2'">
+          Événementiel
+        </a>
+
+        <a href="#services"
+          @click="activeSection = 'automation'"
+          :class="activeSection === 'automation'
+            ? 'bg-blue-600 text-white px-4 py-2 rounded-lg'
+            : 'text-gray-700 hover:text-blue-600 px-4 py-2'">
+          Services
+        </a>
+
+      </nav>
     </div>
 
     <!-- Cartes NFC -->
-    <section id="cartes" class="py-20">
+    <section id="cartes" class="py-20 scroll-mt-24">
       <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -58,30 +103,19 @@
                 <span>Analytics des scans (qui, quand, où)</span>
               </li>
             </ul>
-            <div class="flex gap-4">
-              <NuxtLink to="/contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold">
-                Demander un échantillon
+            <div class="flex gap-4 w-full justify-between">
+              <NuxtLink to="/profil/create" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold">
+                Commander Maintenant
               </NuxtLink>
-              <a href="#pricing" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-bold">
-                Voir les tarifs
-              </a>
+              <p class="text-xl text-green-800 px-6 py-3 rounded-full font-bold bg-green-50">
+                <span>🏷️</span>15.000 FCFA
+              </p>
             </div>
           </div>
           <div class="relative">
             <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-8 transform rotate-3">
-              <div class="bg-white rounded-xl p-6 shadow-2xl transform -rotate-3">
-                <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                  <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                    <span class="text-white text-3xl">📱</span>
-                  </div>
-                  <p class="text-gray-600">Touchez avec votre téléphone</p>
-                  <p class="text-2xl font-bold mt-4">Jean Dupont</p>
-                  <p class="text-gray-500">Directeur Commercial</p>
-                  <div class="mt-6 flex justify-center space-x-4">
-                    <span class="text-gray-400">📧 contact@exemple.com</span>
-                    <span class="text-gray-400">📱 +33 6 12 34 56 78</span>
-                  </div>
-                </div>
+              <div class="bg-white rounded-xl p-2 shadow-2xl transform -rotate-3">
+                  <img src="assets/photo5.png" alt="">
               </div>
             </div>
           </div>
@@ -90,36 +124,18 @@
     </section>
 
     <!-- Menus NFC -->
-    <section id="menus" class="py-20 bg-gray-50">
+    <section id="menus" class="py-20 scroll-mt-24 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="order-2 lg:order-1">
-            <div class="bg-white rounded-2xl shadow-xl p-8">
-              <h3 class="text-2xl font-bold mb-6">Menu Digital Interactif</h3>
-              <div class="space-y-4">
-                <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
-                  <div>
-                    <p class="font-bold">Pizza Margherita</p>
-                    <p class="text-sm text-gray-600">Tomate, mozzarella, basilic</p>
+              <h3 class="text-3xl font-bold mb-10">Menu Digital Interactif</h3>
+              <div class="relative">
+                <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-8 transform rotate-3">
+                  <div class="bg-white rounded-xl p-2 shadow-2xl transform -rotate-3">
+                      <img src="assets/photo8.jpg" alt="">
                   </div>
-                  <span class="font-bold">12€</span>
-                </div>
-                <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
-                  <div>
-                    <p class="font-bold">Burger Gourmet</p>
-                    <p class="text-sm text-gray-600">Bœuf, cheddar, bacon, sauce maison</p>
-                  </div>
-                  <span class="font-bold">16€</span>
-                </div>
-                <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
-                  <div>
-                    <p class="font-bold">Salade César</p>
-                    <p class="text-sm text-gray-600">Poulet, parmesan, croûtons</p>
-                  </div>
-                  <span class="font-bold">10€</span>
                 </div>
               </div>
-            </div>
           </div>
           <div class="order-1 lg:order-2">
             <span class="inline-block px-4 py-1 bg-green-100 text-green-800 rounded-full font-semibold mb-4">
@@ -210,6 +226,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+const activeSection = ref('carte-nfc')
 useSeoMeta({
   title: 'Solutions BizConnect - Cartes NFC, Menus Digitaux, Événements',
   description: 'Découvrez nos solutions NFC innovantes pour digitaliser votre entreprise'
