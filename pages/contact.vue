@@ -133,7 +133,7 @@
             <div class="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-2xl p-8 text-center">
               <h3 class="text-2xl font-bold mb-4">Urgent ?</h3>
               <p class="mb-6">Besoin d'une réponse rapide ?</p>
-              <a href="tel:+33123456789" 
+              <a href="tel:+221770326286" 
                 class="inline-block bg-white text-green-700 px-8 py-3 rounded-lg font-bold hover:bg-green-50">
                 Appelez-nous maintenant
               </a>
@@ -153,8 +153,8 @@
               <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <span class="text-3xl">📍</span>
               </div>
-              <p class="text-xl font-bold">123 Avenue des Champs-Élysées</p>
-              <p class="text-gray-600">75008 Paris, France</p>
+              <p class="text-xl font-bold">Amitié 3, VDN</p>
+              <p class="text-gray-600">Dakar, Senegal</p>
             </div>
           </div>
         </div>
