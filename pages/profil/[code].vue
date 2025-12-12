@@ -366,6 +366,10 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 
+definePageMeta({
+  layout: false
+})
+
 interface Profile {
   id?: number
   code?: string
