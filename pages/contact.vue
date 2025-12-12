@@ -104,7 +104,7 @@
                   </div>
                   <div>
                     <p class="font-bold">Adresse</p>
-                    <p class="opacity-90"><br>Dakar, Senegal</p>
+                    <p class="opacity-90">Amitié 3, VDN, Dakar, Senegal</p>
                   </div>
                 </div>
               </div>
