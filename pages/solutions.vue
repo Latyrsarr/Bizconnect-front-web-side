@@ -164,9 +164,14 @@
                 <p class="font-semibold">Avis clients intégrés</p>
               </div>
             </div>
-            <NuxtLink to="/contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold">
-              Voir une démo
-            </NuxtLink>
+            <div class="flex gap-4 w-full justify-between">
+              <NuxtLink to="/resto/create" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold">
+                Commander Maintenant
+              </NuxtLink>
+              <p class="text-xl text-blue-800 px-6 py-3 rounded-full font-bold bg-blue-50">
+                <span>🏷️</span>20.000 FCFA
+              </p>
+            </div>
           </div>
         </div>
       </div>
