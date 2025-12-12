@@ -86,7 +86,7 @@
                   </div>
                   <div>
                     <p class="font-bold">Email</p>
-                    <p class="opacity-90">contact@bizconnect.fr</p>
+                    <p class="opacity-90">bizconnectnfc@gmail.com</p>
                   </div>
                 </div>
                 <div class="flex items-start">
@@ -95,7 +95,7 @@
                   </div>
                   <div>
                     <p class="font-bold">Téléphone</p>
-                    <p class="opacity-90">+33 1 23 45 67 89</p>
+                    <p class="opacity-90">+221 77 032 62 86</p>
                   </div>
                 </div>
                 <div class="flex items-start">
@@ -104,7 +104,7 @@
                   </div>
                   <div>
                     <p class="font-bold">Adresse</p>
-                    <p class="opacity-90">123 Avenue des Champs-Élysées<br>75008 Paris, France</p>
+                    <p class="opacity-90"><br>Dakar, Senegal</p>
                   </div>
                 </div>
               </div>
@@ -116,15 +116,15 @@
               <div class="space-y-4">
                 <div class="flex justify-between">
                   <span class="text-gray-600">Lundi - Vendredi</span>
-                  <span class="font-bold">9h - 18h</span>
+                  <span class="font-bold">9h - 20h</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-gray-600">Samedi</span>
-                  <span class="font-bold">10h - 14h</span>
+                  <span class="font-bold">10h - 20h</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-gray-600">Dimanche</span>
-                  <span class="font-bold">Fermé</span>
+                  <span class="font-bold">10h - 20h</span>
                 </div>
               </div>
             </div>
