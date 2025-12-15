@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- ... (le même template que vous avez) ... -->
+    <!-- J'ai conservé votre template original, en ajoutant gestion d'état/messages -->
     <!-- Hero Contact -->
     <section class="bg-gradient-to-b from-blue-50 to-white py-20">
       <div class="container mx-auto px-4">
@@ -22,34 +24,42 @@
           <div class="lg:col-span-2">
             <div class="bg-white rounded-2xl shadow-xl p-8">
               <h2 class="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
-              <form @submit.prevent="submitForm" class="space-y-6">
+
+              <div v-if="successMessage" role="status" class="mb-4 p-4 rounded text-green-800 bg-green-100">
+                {{ successMessage }}
+              </div>
+              <div v-if="errorMessage" role="alert" class="mb-4 p-4 rounded text-red-800 bg-red-100">
+                {{ errorMessage }}
+              </div>
+
+              <form @submit.prevent="submitForm" class="space-y-6" novalidate>
                 <div class="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label class="block text-gray-700 mb-2">Nom complet *</label>
-                    <input type="text" v-model="form.name" required
+                    <label for="name" class="block text-gray-700 mb-2">Nom complet *</label>
+                    <input id="name" type="text" v-model="form.name" required
                       class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
                   </div>
                   <div>
-                    <label class="block text-gray-700 mb-2">Entreprise</label>
-                    <input type="text" v-model="form.company"
+                    <label for="company" class="block text-gray-700 mb-2">Entreprise</label>
+                    <input id="company" type="text" v-model="form.company"
                       class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
                   </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label class="block text-gray-700 mb-2">Email *</label>
-                    <input type="email" v-model="form.email" required
+                    <label for="email" class="block text-gray-700 mb-2">Email *</label>
+                    <input id="email" type="email" v-model="form.email" required
                       class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
                   </div>
                   <div>
-                    <label class="block text-gray-700 mb-2">Téléphone</label>
-                    <input type="tel" v-model="form.phone"
+                    <label for="phone" class="block text-gray-700 mb-2">Téléphone</label>
+                    <input id="phone" type="tel" v-model="form.phone"
                       class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
                   </div>
                 </div>
                 <div>
-                  <label class="block text-gray-700 mb-2">Sujet *</label>
-                  <select v-model="form.subject" required
+                  <label for="subject" class="block text-gray-700 mb-2">Sujet *</label>
+                  <select id="subject" v-model="form.subject" required
                     class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
                     <option value="">Sélectionnez un sujet</option>
                     <option value="cartes">Cartes de visite NFC</option>
@@ -61,14 +71,16 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block text-gray-700 mb-2">Message *</label>
-                  <textarea v-model="form.message" required rows="6"
+                  <label for="message" class="block text-gray-700 mb-2">Message *</label>
+                  <textarea id="message" v-model="form.message" required rows="6"
                     class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none"
                     placeholder="Décrivez votre projet ou votre demande..."></textarea>
                 </div>
-                <button type="submit" 
-                  class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition">
-                  Envoyer le message
+                <button type="submit"
+                  :disabled="loading"
+                  class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition disabled:opacity-60">
+                  <span v-if="loading">Envoi...</span>
+                  <span v-else>Envoyer le message</span>
                 </button>
               </form>
             </div>
@@ -133,7 +145,7 @@
             <div class="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-2xl p-8 text-center">
               <h3 class="text-2xl font-bold mb-4">Urgent ?</h3>
               <p class="mb-6">Besoin d'une réponse rapide ?</p>
-              <a href="tel:+221770326286" 
+              <a href="tel:+221770326286"
                 class="inline-block bg-white text-green-700 px-8 py-3 rounded-lg font-bold hover:bg-green-50">
                 Appelez-nous maintenant
               </a>
@@ -175,17 +187,38 @@ const form = ref({
   message: ''
 })
 
-const submitForm = () => {
-  // Ici, vous intégrerez votre backend ou service d'email
-  console.log('Form submitted:', form.value)
-  alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.')
-  form.value = {
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+const loading = ref(false)
+const successMessage = ref('')
+const errorMessage = ref('')
+
+const resetForm = () => {
+  form.value = { name: '', company: '', email: '', phone: '', subject: '', message: '' }
+}
+
+const submitForm = async () => {
+  errorMessage.value = ''
+  successMessage.value = ''
+
+  // Validation simple côté client
+  if (!form.value.name || !form.value.email || !form.value.subject || !form.value.message) {
+    errorMessage.value = 'Veuillez remplir tous les champs obligatoires.'
+    return
+  }
+
+  loading.value = true
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: form.value
+    })
+    successMessage.value = 'Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.'
+    resetForm()
+  } catch (err) {
+    console.error('Erreur API contact:', err)
+    // H3 errors parfois renvoient err.statusMessage ou err.data.message
+    errorMessage.value = err?.data?.message || err?.statusMessage || 'Une erreur est survenue, réessayez plus tard.'
+  } finally {
+    loading.value = false
   }
 }
 
