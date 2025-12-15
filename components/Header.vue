@@ -1,6 +1,6 @@
 <template>
   <header class="sticky top-0 z-50 bg-white shadow-sm">
-    <nav class="container mx-auto px-4 py-4 relative">
+    <nav ref="menuRef" class="container mx-auto px-4 py-4 relative">
       <div class="flex justify-between items-center">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
@@ -67,9 +67,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const isMenuOpen = ref(false)
+const menuRef = ref(null)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -78,6 +79,23 @@ const toggleMenu = () => {
 const closeMenu = () => {
   isMenuOpen.value = false
 }
+
+// Fonction pour fermer le menu si on clique à l'extérieur
+const handleClickOutside = (event) => {
+  if (isMenuOpen.value && menuRef.value && !menuRef.value.contains(event.target)) {
+    closeMenu()
+  }
+}
+
+// Écouter les clics à l'extérieur
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+// Nettoyer l'écouteur d'événement
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <style scoped>
