@@ -128,7 +128,7 @@
       <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="order-2 lg:order-1">
-              <h3 class="text-3xl font-bold mb-10">Menu Digital Interactif</h3>
+              <!-- <h3 class="text-3xl font-bold mb-10">Menu Digital Interactif</h3> -->
               <div class="relative">
                 <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-8 transform rotate-3">
                   <div class="bg-white rounded-xl p-2 shadow-2xl transform -rotate-3">
@@ -141,7 +141,7 @@
             <span class="inline-block px-4 py-1 bg-green-100 text-green-800 rounded-full font-semibold mb-4">
               Pour Restaurants & Cafés
             </span>
-            <h2 class="text-3xl font-bold mb-6">Tags Menu NFC</h2>
+            <h2 class="text-3xl font-bold mb-6">Menu Digital Interactif (Tags Menu NFC)</h2>
             <p class="text-gray-600 mb-6">
               Transformez l'expérience client de votre restaurant avec des menus digitaux interactifs. 
               Plus besoin d'imprimer à chaque changement.
