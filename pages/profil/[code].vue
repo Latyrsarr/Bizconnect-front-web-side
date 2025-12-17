@@ -349,7 +349,7 @@
         </div>
 
         <!-- Footer -->
-        <div class="flex mt-2">
+        <div class="flex mt-6">
           <div class="w-full bg-gray-900 flex items-center justify-center text-white text-center py-2">
             <p class=" text-base py-2">©{{ year }} BizConnect</p><p class="ml-2">|</p>
           <!-- </div> -->
