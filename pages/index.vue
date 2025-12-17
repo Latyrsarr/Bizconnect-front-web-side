@@ -35,7 +35,7 @@
     <!-- Problèmes résolus -->
     <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-blue-600">Les problèmes que nous résolvons</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 text-blue-700">Les problèmes que nous résolvons</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="bg-white p-6 rounded-xl shadow-sm">
             <div class="w-full flex justify-center">
@@ -84,7 +84,7 @@
     <!-- Solutions phares -->
     <section class="py-20">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-blue-600">Nos solutions phares</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 text-blue-700">Nos solutions phares</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Carte de visite NFC -->
           <div class="border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-shadow">
