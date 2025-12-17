@@ -3,7 +3,7 @@
     <div class="max-w-4xl mx-auto">
       <!-- En-tête -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">Créer un nouveau profil</h1>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Créer votre profil</h1>
         <p class="text-gray-600">Remplissez les informations pour créer une carte de visite numérique</p>
       </div>
 
@@ -515,7 +515,7 @@
             <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <h3 class="font-medium text-blue-800 mb-2">Information</h3>
               <p class="text-sm text-blue-700">
-                Après la création de votre profil, notre équipe vous contactera dans les jours à venir afin de finaliser et vous livrer votre carte de visite.
+                Après la création de votre profil, notre équipe vous contactera dans les jours à venir afin de finaliser et vous livrer votre business carte.
               </p>
             </div>
           </div>

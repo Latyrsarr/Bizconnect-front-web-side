@@ -349,8 +349,18 @@
         </div>
 
         <!-- Footer -->
-        <div class="bg-gray-900 text-white text-center py-4 px-6">
-          <p class="text-sm">©{{ year }} BizConnectNFC | {{ profile.num_contact ?? '' }}</p>
+        <div class="flex">
+          <div class="w-full bg-gray-900 flex items-center justify-center text-white text-center py-2">
+            <p class=" text-base py-2">©{{ year }} BizConnect</p><p class="ml-2">|</p>
+          <!-- </div> -->
+          <!-- <div class="w-full bg-gray-900 flex items-center text-white  py-2"> -->
+            <NuxtLink
+              to="/profil/create"
+              class="flex items-center bg-gray-900 px-2 py-2 rounded-lg hover:bg-gray-700 transition"
+            >
+              <img class="h-8 mr-2" src="assets/photo9.png" alt=""><p class="underline-custom">Commander ma carte</p>
+            </NuxtLink>
+          </div>
         </div>
       </div>
 
@@ -642,5 +652,22 @@ function saveContact() {
 /* Style spécifique pour la section entreprise */
 .border-t {
   border-top-width: 1px;
+}
+
+.underline-custom {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.underline-custom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 1px; /* épaisseur du soulignement */
+  background-color: #ffffff;
+  border-radius: 4px;
 }
 </style>
