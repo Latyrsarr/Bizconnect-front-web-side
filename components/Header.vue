@@ -4,10 +4,12 @@
       <div class="flex justify-between items-center">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
+         <NuxtLink class="flex items-center" to="/">
           <div class="w-14 h-14 rounded-lg flex items-center justify-center mt-2">
             <img src="assets/bizconnect.svg" alt="">
           </div>
           <span class="text-2xl font-bold text-blue-900">BizConnect</span>
+         </NuxtLink>
         </div>
 
         <!-- Menu Desktop -->
