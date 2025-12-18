@@ -42,7 +42,7 @@
             </div>
             <div>
               <p class="text-sm text-gray-500">Profils Actifs</p>
-              <p class="text-2xl font-bold text-gray-800">{{ getCountByStatus('actif') }}</p>
+              <p class="text-2xl font-bold text-gray-800">{{ getCountByStatus('active') }}</p>
             </div>
           </div>
         </div>
@@ -549,7 +549,7 @@ const API_URL = 'https://bizconnect-back-web-side.vercel.app/profiles'
 
 // Options pour les filtres
 const statusOptions = ref([
-  { value: 'actif', label: 'Actif' },
+  { value: 'active', label: 'Actif' },
   { value: 'en_attente_de_validation', label: 'En attente' },
   { value: 'inactif', label: 'Inactif' }
 ])
@@ -840,7 +840,7 @@ const formatStatus = (status) => {
 const getStatusClass = (status) => {
   const classes = {
     'en_attente_de_validation': 'bg-yellow-100 text-yellow-800',
-    'actif': 'bg-green-100 text-green-800',
+    'active': 'bg-green-100 text-green-800',
     'inactif': 'bg-red-100 text-red-800'
   }
   return classes[status] || 'bg-gray-100 text-gray-800'
