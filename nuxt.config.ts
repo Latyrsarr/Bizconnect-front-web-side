@@ -21,5 +21,9 @@ export default defineNuxtConfig({
     smtpPass: process.env.SMTP_PASS || '',
     contactRecipient: process.env.CONTACT_RECIPIENT || 'bizconnectnfc@gmail.com',
     // public: { ... } // si besoin d'exposer qqch au client
+    public: {
+      // Variables publiques (client + serveur)
+      accessPassword: process.env.NUXT_PUBLIC_ACCESS_PASSWORD
+    }
   }
 })
