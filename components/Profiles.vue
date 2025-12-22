@@ -404,11 +404,19 @@
                     {{ formatDateShort(profile.createdAt) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button 
-                      @click.stop="toggleProfile(profile.id)"
+                    <!-- <button 
+                      @click.stop="toggleProfile(profile.code)"
                       class="text-blue-600 hover:text-blue-900 mr-3"
                     >
-                      {{ expandedProfile === profile.id ? 'Masquer' : 'Voir détails' }}
+                      Voir détails
+                    </button> -->
+                    <button
+                      type="button"
+                      @click.stop="goToProfile(profile.code)"
+                      class="text-blue-600 hover:text-blue-900 mr-3"
+                      :aria-label="`Voir le profil ${profile.code}`"
+                    >
+                      Voir détails
                     </button>
                     <a 
                       :href="profile.contact_url" 
@@ -423,10 +431,8 @@
 
                 <!-- Ligne détaillée (expandable) -->
                 <tr v-if="expandedProfile === profile.id">
-                  <td colspan="6" class="px-6 py-6 bg-blue-50 border-t border-blue-100">
-                    <!-- Même contenu détaillé que précédemment -->
-                    <!-- ... (garder le même contenu détaillé que dans le code précédent) ... -->
-                  </td>
+                  <!-- <td colspan="6" class="px-6 py-6 bg-blue-50 border-t border-blue-100">
+                  </td> -->
                 </tr>
               </template>
             </template>
@@ -525,6 +531,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
 
 const profiles = ref([])
 const loading = ref(true)
@@ -704,6 +711,12 @@ const activeFiltersCount = computed(() => {
 // Fonctions
 const toggleProfile = (profileId) => {
   expandedProfile.value = expandedProfile.value === profileId ? null : profileId
+}
+
+const router = useRouter()
+function goToProfile(code) {
+  // redirige vers /admin/<code>
+  router.push(`/admin/${code}`)
 }
 
 const sortBy = (field) => {

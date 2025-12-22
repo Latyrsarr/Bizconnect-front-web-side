@@ -44,13 +44,6 @@ const validatePassword = () => {
     </div>
 
     <div v-else>
-      <!-- <MonComposantProtege />
-      <button 
-        @click="isAuthenticated = false; password = ''" 
-        class="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded"
-      >
-        Se déconnecter
-      </button> -->
       <Profiles />
     </div>
   </div>
