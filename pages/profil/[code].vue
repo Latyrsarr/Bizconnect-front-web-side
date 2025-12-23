@@ -1,7 +1,77 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 pt-4">
     <div class="max-w-md mx-auto">
-      <div v-if="loading" class="text-center text-gray-500">Chargement...</div>
+      <!-- <div v-if="loading" class="text-center text-gray-500">Chargement...</div> -->
+      <div v-if="loading" class="text-center">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden p-8">
+          <!-- Animation de chargement -->
+          <div class="flex flex-col items-center justify-center">
+            <div class="relative mb-8">
+              <!-- Cercle de chargement animé -->
+              <div class="w-32 h-32 rounded-full border-4 border-gray-200 animate-pulse"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-r from-gray-200 to-gray-300 animate-spin"></div>
+              </div>
+            </div>
+            
+            <!-- Texte de chargement -->
+            <div class="space-y-4 w-full">
+              <div class="h-6 bg-gray-200 rounded-lg w-3/4 mx-auto animate-pulse"></div>
+              <div class="h-4 bg-gray-200 rounded-lg w-1/2 mx-auto animate-pulse"></div>
+              
+              <!-- Bouton de chargement -->
+              <div class="mt-6">
+                <div class="h-10 bg-gray-200 rounded-full w-48 mx-auto animate-pulse"></div>
+              </div>
+              
+              <!-- Sections de chargement -->
+              <div class="space-y-6 mt-8">
+                <!-- Section Contact -->
+                <div class="bg-gray-50 border-2 border-gray-100 rounded-2xl p-5 animate-pulse">
+                  <div class="h-6 bg-gray-200 rounded-lg w-32 mb-4"></div>
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                      <div class="h-4 bg-gray-200 rounded-lg w-40"></div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                      <div class="h-4 bg-gray-200 rounded-lg w-48"></div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                      <div class="h-4 bg-gray-200 rounded-lg w-36"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Section Entreprise -->
+                <div class="bg-gray-50 border-2 border-gray-100 rounded-2xl p-5 animate-pulse">
+                  <div class="flex items-center mb-4">
+                    <div class="w-16 h-16 bg-gray-200 rounded-lg"></div>
+                    <div class="h-6 bg-gray-200 rounded-lg w-32 ml-4"></div>
+                  </div>
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                      <div class="h-4 bg-gray-200 rounded-lg w-40"></div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                      <div class="h-4 bg-gray-200 rounded-lg w-48"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Texte d'indication -->
+            <p class="text-gray-500 mt-8 text-sm">
+              Chargement du profil en cours...
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div v-else-if="profile" class="bg-white rounded-t-3xl shadow-2xl overflow-hidden">
         <!-- En-tête avec photo - Couleur dynamique -->
