@@ -1,7 +1,10 @@
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss',
+    '@nuxtjs/tailwindcss', '@nuxtjs/sitemap'
   ],
+  sitemap: {
+    siteUrl: 'https://bizconnect-front-web-side.vercel.app',
+  },
   css: [
     '@/assets/css/main.css'
   ],

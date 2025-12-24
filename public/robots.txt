@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ton-site.vercel.app/sitemap.xml
+Sitemap: https://bizconnect-front-web-side.vercel.app/sitemap.xml
