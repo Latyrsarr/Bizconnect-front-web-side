@@ -1,6 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 
+useSeoMeta({
+  title: 'Page Admin',
+  description: 'Gestion des profils et des utilisateurs'
+})
+
 const password = ref('')
 const isAuthenticated = ref(false)
 

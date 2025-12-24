@@ -178,6 +178,11 @@
 <script setup>
 import { ref } from 'vue'
 
+useSeoMeta({
+  title: 'Contact - BizConnect',
+  description: 'Contactez-nous pour toute demande d\'information ou de support.'
+})
+
 const form = ref({
   name: '',
   company: '',

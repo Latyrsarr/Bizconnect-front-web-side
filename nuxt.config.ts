@@ -10,6 +10,11 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
+      title: 'BizConnect',
+      meta: [
+        { name: 'description', content: 'La plateforme de mise en relation pour les professionnels, carte de visite numérique et gestion de contacts. carte de visite sans contact. carte de visite nfc.' },
+        { name: 'robots', content: 'index, follow' }
+      ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/svg", href: "/bizconnect.svg" }
@@ -28,5 +33,6 @@ export default defineNuxtConfig({
       // Variables publiques (client + serveur)
       accessPassword: process.env.NUXT_PUBLIC_ACCESS_PASSWORD
     }
-  }
+  },
+  ssr: true
 })

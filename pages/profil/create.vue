@@ -555,6 +555,11 @@
 import { ref, reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
+useSeoMeta({
+  title: 'Création de Profil',
+  description: 'Formulaire de création de profil pour les utilisateurs'
+})
+
 interface FormData {
   nom_complet: string
   post: string
