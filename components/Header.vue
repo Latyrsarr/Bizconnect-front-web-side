@@ -20,9 +20,9 @@
           <NuxtLink to="/solutions" class="text-gray-700 hover:text-blue-600 font-medium">
             Solutions
           </NuxtLink>
-          <NuxtLink to="/pricing" class="text-gray-700 hover:text-blue-600 font-medium">
+          <!-- <NuxtLink to="/pricing" class="text-gray-700 hover:text-blue-600 font-medium">
             Tarifs
-          </NuxtLink>
+          </NuxtLink> -->
           <NuxtLink to="/events" class="text-gray-700 hover:text-blue-600 font-medium">
             Événements
           </NuxtLink>
