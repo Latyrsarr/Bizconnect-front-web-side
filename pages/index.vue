@@ -186,7 +186,7 @@
 
 <script setup>
 useSeoMeta({
-  title: 'BizConnect Sénégal - La connectivité au bout des doigts',
+  title: 'BizConnect',
   description: 'Solutions NFC innovantes pour connecter votre entreprise au monde numérique',
   ogTitle: 'BizConnect Sénégal - Solutions NFC pour entreprises',
   ogDescription: 'Transformez vos interactions physiques en opportunités numériques'
