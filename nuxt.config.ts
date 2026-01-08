@@ -10,14 +10,49 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: 'BizConnect',
+      title: 'BizConnect - Solutions NFC à Dakar',
+      htmlAttrs: {
+        lang: 'fr'
+      },
       meta: [
-        { name: 'description', content: 'La plateforme de mise en relation pour les professionnels, carte de visite numérique et gestion de contacts. carte de visite sans contact. carte de visite nfc.' },
-        { name: 'robots', content: 'index, follow' }
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { 
+          name: 'description', 
+          content: 'BizConnect - Plateforme de mise en relation professionnelle à Dakar. Carte de visite numérique NFC, gestion de contacts et solutions sans contact.' 
+        },
+        { name: 'robots', content: 'index, follow' },
+        
+        // Open Graph pour Facebook/LinkedIn
+        { property: 'og:title', content: 'BizConnect - Solutions NFC Innovantes à Dakar' },
+        { property: 'og:description', content: 'Transformez vos interactions physiques en opportunités numériques avec nos solutions NFC à Dakar, Sénégal.' },
+        { property: 'og:image', content: 'https://bizconnect-front-web-side.vercel.app/bizconnect.svg' },
+        { property: 'og:url', content: 'https://bizconnect-front-web-side.vercel.app' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'fr_SN' },
+        
+        // Twitter
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: 'BizConnect Dakar' },
+        { name: 'twitter:description', content: 'La connectivité au bout des doigts à Dakar' },
+        { name: 'twitter:image', content: 'https://bizconnect-front-web-side.vercel.app/bizconnect.svg' },
+        
+        // Mobile
+        { name: 'theme-color', content: '#000000' }
       ],
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-        { rel: "icon", type: "image/svg", href: "/bizconnect.svg" }
+        // UNIQUEMENT votre logo SVG - CORRECTEMENT FORMATÉ
+        { 
+          rel: 'icon', 
+          type: 'image/svg+xml', 
+          href: '/bizconnect.svg' 
+        },
+        
+        // Optionnel: pour Apple devices
+        { 
+          rel: 'apple-touch-icon', 
+          href: '/bizconnect.svg' 
+        }
       ]
     }
   },
